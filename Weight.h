@@ -10,22 +10,25 @@
 ///////////////////////////////////////////////////////////////////////////////
 #ifndef EE205_LAB12A_FATCAT_WEIGHT_H
 #define EE205_LAB12A_FATCAT_WEIGHT_H
+#pragma once
+#include <ostream>
 
-enum UnitOfWeight {};
+enum UnitOfWeight {POUND, KILO, SLUG};
 
 class Weight {
 private:
-    bool blsKnown;
-    bool bHasMax;
-    enum UnitOfWeight unitOfWeight;
-    float weight;
-    float maxWeight;
+    bool bIsKnown = false;
+    bool bHasMax = false;
+    enum UnitOfWeight unitOfWeight = POUND;
+    float weight = UNKNOWN_WEIGHT;
+    float maxWeight = UNKNOWN_WEIGHT;
     void setMaxWeight(float newMaxWeight);
+    void setUnitOfWeight(UnitOfWeight newUnitOfWeight);
 
 public:
-    static const float UNKNOWN_WEIGHT;
-    static const float KILOS_IN_A_POUND;
-    static const float SLUGS_IN_A_POUND;
+    constexpr static const float UNKNOWN_WEIGHT = -1;
+    constexpr static const float KILOS_IN_A_POUND = 0.453592;
+    constexpr static const float SLUGS_IN_A_POUND = 0.031081;
 
     Weight() noexcept;
     Weight(float newWeight);
@@ -53,6 +56,7 @@ public:
     static float fromSlugToPound(float slug) noexcept;
     static float fromPoundToSlug(float pound) noexcept;
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
+
 };
 
 #endif //EE205_LAB12A_FATCAT_WEIGHT_H
