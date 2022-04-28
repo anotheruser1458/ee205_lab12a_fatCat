@@ -44,6 +44,8 @@ int main() {
     cout << "w7 weight: pounds " << w7.getWeight(POUND) << endl;
     cout << "w7 weight: slugs " << w7.getWeight(SLUG) << endl;
 
+    w7.setWeight(1, SLUG);
+    w7.dump();
     return 0;
 }
 

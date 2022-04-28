@@ -31,8 +31,8 @@ public:
     constexpr static const float SLUGS_IN_A_POUND = 0.031081;
 
     Weight() noexcept;
-    Weight(float newWeight);
-    Weight(UnitOfWeight newUnitOfWeight) noexcept;
+    explicit Weight(float newWeight);
+    explicit Weight(UnitOfWeight newUnitOfWeight) noexcept;
     Weight(float newWeight, UnitOfWeight newUnitOfWeight);
     Weight(float newWeight, float newMaxWeight);
     Weight(UnitOfWeight newUnitOfWeight, float newMaxWeight);
@@ -56,8 +56,6 @@ public:
     static float fromSlugToPound(float slug) noexcept;
     static float fromPoundToSlug(float pound) noexcept;
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
-
-    friend std::ostream &operator<<(std::ostream &os, Weight &weight);
 
 };
 

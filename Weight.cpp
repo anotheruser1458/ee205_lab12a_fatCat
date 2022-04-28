@@ -13,6 +13,13 @@
 #include <stdexcept>
 using namespace std;
 
+Weight::Weight() noexcept {
+
+}
+
+Weight::Weight(float newWeight) {
+    setWeight(newWeight);
+}
 
 Weight::Weight(UnitOfWeight newUnitOfWeight) noexcept {
     setUnitOfWeight(newUnitOfWeight);
@@ -88,7 +95,14 @@ void Weight::setWeight(float newWeight) {
 }
 
 void Weight::setWeight(float newWeight, UnitOfWeight weightUnits) {
-
+    float weightInPounds = convertWeight(newWeight, weightUnits, POUND);
+    switch((int)Weight::unitOfWeight) {
+        case POUND: setWeight(weightInPounds); break;
+        case KILO: setWeight(convertWeight(weightInPounds, POUND, KILO)); break;
+        case SLUG: setWeight(convertWeight(weightInPounds, POUND, SLUG)); break;
+        default:
+            throw out_of_range("Can't convert weight to specified unit");
+    }
 }
 
 bool Weight::isWeightValid(float checkWeight) const noexcept {
@@ -197,13 +211,3 @@ float Weight::convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeigh
 void Weight::setUnitOfWeight(UnitOfWeight newUnitOfWeight) {
     Weight::unitOfWeight = newUnitOfWeight;
 }
-
-Weight::Weight() noexcept {
-
-}
-
-Weight::Weight(float newWeight) {
-    setWeight(newWeight);
-}
-
-
