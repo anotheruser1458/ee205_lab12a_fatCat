@@ -1,10 +1,21 @@
+///////////////////////////////////////////////////////////////////////////////
+///         University of Hawaii, College of Engineering
+/// @brief  ee205_lab12a_fatCat - EE 205 - Spr 2022
+///
+/// @file main.cpp
+/// @version 1.0
+///
+/// @author Maxwell Pauly <mgpauly@hawaii.edu>
+/// @date   25_Apr_2022
+///////////////////////////////////////////////////////////////////////////////
+
+
 #include <iostream>
 #include "Weight.h"
 #define DEBUG
-#ifdef DEBUG
-#include <iostream>
 using namespace std;
-#include "Weight.h"
+
+#ifdef DEBUG
 
 int main() {
     Weight w1;
@@ -50,11 +61,10 @@ int main() {
     w7.validate();
     return 0;
 }
-
 #else
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
     return 0;
 }
 
