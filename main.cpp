@@ -9,7 +9,6 @@ using namespace std;
 int main() {
     Weight w1;
     w1.dump();
-    cout << "is weight known? " << (w1.isWeightKnown() ? "true":"false") << endl;
 
     Weight w2(KILO);
     w2.dump();

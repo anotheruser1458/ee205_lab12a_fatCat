@@ -57,6 +57,19 @@ public:
     static float fromPoundToSlug(float pound) noexcept;
     static float convertWeight(float fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit) noexcept;
 
+    friend std::ostream &operator<<(std::ostream &os, Weight &weight);
+
 };
+
+inline std::ostream &operator<<(std::ostream &os, UnitOfWeight unit) {
+    switch (unit) {
+        case POUND: os << "Pound"; break;
+        case KILO: os << "Kilogram"; break;
+        case SLUG: os << "Slug"; break;
+        default:
+            throw std::out_of_range("Not convertible to a string");
+    }
+    return os;
+}
 
 #endif //EE205_LAB12A_FATCAT_WEIGHT_H
