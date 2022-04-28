@@ -36,6 +36,9 @@ int main() {
     Weight w6(KILO, 30.2);
     w6.dump();
 
+//    Weight w7(30, 10);
+//    w7.dump();
+
     Weight w7(3.0, KILO, 50);
     w7.dump();
 
