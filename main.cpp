@@ -46,6 +46,8 @@ int main() {
 
     w7.setWeight(1, SLUG);
     w7.dump();
+
+    w7.validate();
     return 0;
 }
 

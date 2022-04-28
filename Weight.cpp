@@ -54,6 +54,9 @@ float Weight::getWeight() const noexcept {
 }
 
 void Weight::setMaxWeight(float newMaxWeight) {
+    if(!isWeightValid(newMaxWeight)) {
+        throw out_of_range("Weight not valid");
+    }
     Weight::maxWeight = newMaxWeight;
     bHasMax = true;
 }
@@ -118,7 +121,12 @@ bool Weight::isWeightValid(float checkWeight) const noexcept {
 }
 
 bool Weight::validate() const noexcept {
-    return false;
+    if(!isWeightValid(Weight::weight)) {
+        cout << "Weight is not healthy" << endl;
+        return false;
+    }
+    cout << "Weight is healthy" << endl;
+    return true;
 }
 
 void Weight::dump() const noexcept {
